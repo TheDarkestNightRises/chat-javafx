@@ -1,13 +1,16 @@
 package client.views.signup;
 
+import client.core.ViewController;
+import client.core.ViewHandler;
+import client.core.ViewModelFactory;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
-import viewmodel.SignUpViewModel;
 
-public class SignUpViewController {
+
+public class SignUpViewController implements ViewController {
     @FXML
     private PasswordField password;
     @FXML
@@ -37,26 +40,19 @@ public class SignUpViewController {
 
     @FXML
     protected void signUpButtonPressed() {
-        boolean success = viewModel.createUser();
-        if (success) {
-            viewHandler.openView(ViewHandler.CREATE);
-        }
+
     }
 
-    public void init(ViewHandler viewHandler, SignUpViewModel signUpViewModel, Region region) {
-        this.viewHandler = viewHandler;
-        this.viewModel = signUpViewModel;
-        this.root = root;
 
-        signUpViewModel.bindUsername(username.textProperty());
-        signUpViewModel.bindPassword(password.textProperty());
-        signUpViewModel.bindEmail(email.textProperty());
-    }
 
     public static Region getRoot() {
         return root;
     }
 
 
+    @Override
+    public void init(ViewHandler vh, ViewModelFactory vmf) {
+        
+    }
 }
 
