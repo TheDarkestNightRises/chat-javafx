@@ -21,7 +21,7 @@ public class LogViewController implements ViewController {
   public void init(ViewHandler vh, ViewModelFactory vmf) {
     viewHandler = vh;
     logViewModel = vmf.getLogViewModel();
-    logViewModel.bindMessage(log.itemsProperty());
+    logViewModel.bindItems(log.itemsProperty());
   }
 
 }

@@ -8,7 +8,10 @@ import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-public class LogViewModel
+import java.beans.PropertyChangeEvent;
+import java.beans.PropertyChangeListener;
+
+public class LogViewModel implements PropertyChangeListener
 {
 
   private ChatManager model;
@@ -20,9 +23,19 @@ public class LogViewModel
     this.logItems = new SimpleListProperty<>(FXCollections.observableArrayList());
   }
 
+  public void updateLog()
+  {
+  //  logItems.setAll(model.history)//
+  }
 
-  public void bindMessage(ObjectProperty<ObservableList<String>> property) {
+
+  public void bindItems(ObjectProperty<ObservableList<String>> property) {
     property.bind(logItems);
+  }
+
+  @Override public void propertyChange(PropertyChangeEvent evt)
+  {
+    updateLog();
   }
 }
 

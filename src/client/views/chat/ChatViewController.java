@@ -27,7 +27,7 @@ public class ChatViewController implements ViewController {
     }
     @FXML protected void viewLogButtonPressed()
     {
-
+       vh.openLog();
     }
     @FXML protected void sendButtonPressed()
     {
