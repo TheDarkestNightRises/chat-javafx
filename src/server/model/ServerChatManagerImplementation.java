@@ -1,4 +1,4 @@
 package server.model;
 
-public class ServerChatManagerImplementation {
+public class ServerChatManagerImplementation implements ServerChatManager{
 }
