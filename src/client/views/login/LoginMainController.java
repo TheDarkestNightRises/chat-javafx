@@ -10,8 +10,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
 
 
-
-public class LoginMainController implements ViewController{
+public class LoginMainController implements ViewController {
     public Button signIn;
     public Button signUp;
     @FXML
@@ -46,14 +45,4 @@ public class LoginMainController implements ViewController{
         LoginMainViewModel.bindPassword(password.textProperty());
 
     }
-    public Region getRoot() {
-        return root;
-    }
-
-
-
-    public void signUpButtonPressed() {
-    }
-
-
 }
