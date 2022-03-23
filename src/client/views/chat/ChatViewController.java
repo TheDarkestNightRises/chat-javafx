@@ -4,6 +4,7 @@ import client.core.ViewController;
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
@@ -11,6 +12,7 @@ import javafx.scene.layout.Region;
 public class ChatViewController implements ViewController {
     @FXML private ListView<String> chatView;
     @FXML private TextField message;
+    @FXML private Label user;
     private ViewHandler vh;
     private ChatViewModel viewModel;
 
@@ -18,7 +20,10 @@ public class ChatViewController implements ViewController {
     public void init(ViewHandler vh, ViewModelFactory vmf) {
         this.vh = vh;
         this.viewModel = vmf.getChatViewModel();
-        //bind
+
+        viewModel.bindChat(chatView.itemsProperty());
+        viewModel.bindMessage(message.textProperty());
+        viewModel.bindUser(user.textProperty());
     }
     @FXML protected void viewLogButtonPressed()
     {
@@ -26,6 +31,6 @@ public class ChatViewController implements ViewController {
     }
     @FXML protected void sendButtonPressed()
     {
-
+        viewModel.send();
     }
 }
