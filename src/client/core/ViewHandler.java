@@ -59,6 +59,18 @@ public class ViewHandler {
         }
     }
 
+    public void openSignUp(){
+        try {
+            Parent root = loadFXML("../views/signup/SignUpView.fxml");
+            Scene signUp = new Scene(root);
+            stage.setTitle("Sign Up");
+            stage.setScene(signUp);
+            stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
 
     private Parent loadFXML(String path) throws IOException {
         FXMLLoader loader = new FXMLLoader();

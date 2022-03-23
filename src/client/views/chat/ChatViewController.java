@@ -3,6 +3,7 @@ package client.views.chat;
 import client.core.ViewController;
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -32,5 +33,9 @@ public class ChatViewController implements ViewController {
     @FXML protected void sendButtonPressed()
     {
         viewModel.send();
+    }
+
+    public void openSignUp() {
+        vh.openSignUp();
     }
 }
