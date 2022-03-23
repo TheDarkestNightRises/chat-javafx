@@ -1,0 +1,43 @@
+<!--<?xml version="1.0" encoding="UTF-8"?>-->
+
+<!--<?import javafx.scene.control.Button?>-->
+<!--<?import javafx.scene.control.PasswordField?>-->
+<!--<?import javafx.scene.control.TextField?>-->
+<!--<?import javafx.scene.layout.AnchorPane?>-->
+<!--<?import javafx.scene.layout.HBox?>-->
+<!--<?import javafx.scene.text.Font?>-->
+<!--<?import javafx.scene.text.Text?>-->
+
+<!--<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="511.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.SignUpViewController">-->
+<!--    <children>-->
+<!--        <HBox layoutX="200.0" layoutY="14.0" prefHeight="29.0" prefWidth="201.0">-->
+<!--            <children>-->
+<!--                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sign Up" textAlignment="CENTER" wrappingWidth="200.13671875">-->
+<!--                    <font>-->
+<!--                        <Font size="25.0" />-->
+<!--                    </font>-->
+<!--                </Text>-->
+<!--            </children>-->
+<!--        </HBox>-->
+<!--        <HBox layoutX="144.0" layoutY="93.0" prefHeight="33.0" prefWidth="316.0">-->
+<!--            <children>-->
+<!--                <TextField fx:id="username" onAction="#submitUsername" prefHeight="33.0" prefWidth="316.0" promptText="Username" />-->
+<!--            </children>-->
+<!--        </HBox>-->
+<!--        <HBox layoutX="144.0" layoutY="180.0" prefHeight="33.0" prefWidth="316.0">-->
+<!--            <children>-->
+<!--                <TextField fx:id="email" onAction="#submitEmail" prefHeight="45.0" prefWidth="318.0" promptText="Email" />-->
+<!--            </children>-->
+<!--        </HBox>-->
+<!--        <HBox layoutX="142.0" layoutY="256.0" prefHeight="33.0" prefWidth="316.0">-->
+<!--            <children>-->
+<!--                <PasswordField fx:id="password" onAction="#submitPassword" prefHeight="33.0" prefWidth="316.0" promptText="Password" />-->
+<!--            </children>-->
+<!--        </HBox>-->
+<!--        <HBox layoutX="232.0" layoutY="329.0" prefHeight="34.0" prefWidth="137.0">-->
+<!--            <children>-->
+<!--                <Button fx:id="signUpButton" mnemonicParsing="false" onAction="#signUpButtonPressed" prefHeight="40.0" prefWidth="138.0" text="Sign Up" />-->
+<!--            </children>-->
+<!--        </HBox>-->
+<!--    </children>-->
+<!--</AnchorPane>-->
