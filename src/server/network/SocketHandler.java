@@ -1,6 +1,8 @@
 package server.network;
 
+import client.model.User;
 import server.model.ServerChatManager;
+import shared.Request;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -27,6 +29,13 @@ public class SocketHandler implements Runnable{
 
     @Override
     public void run() {
-
+        try {
+            Request request = (Request) inFromClient.readObject();
+            if("UserAdded".equals(request.getType())) {
+                serverChatManager.addUser((User) request.getArg());
+            }
+        } catch (IOException | ClassNotFoundException e) {
+            e.printStackTrace();
+        }
     }
 }

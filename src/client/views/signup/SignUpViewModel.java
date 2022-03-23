@@ -1,16 +1,17 @@
 package client.views.signup;
 
+import client.model.ChatManager;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
 
 public class SignUpViewModel {
-    private final UserModel model;
+    private final ChatManager model;
     private final StringProperty username;
     private final StringProperty password;
     private final StringProperty email;
 
-    public SignUpViewModel(UserModel model){
+    public SignUpViewModel(ChatManager model){
         this.model = model;
         this.username = new SimpleStringProperty("");
         this.password = new SimpleStringProperty("");
@@ -18,7 +19,7 @@ public class SignUpViewModel {
     }
     public boolean createUser(){
         try{
-            addUser(username.get(), password.get(), email.get());
+            model.addUser(username.get(), password.get(), email.get());
             return true;
         }catch (Exception e){
             return false;

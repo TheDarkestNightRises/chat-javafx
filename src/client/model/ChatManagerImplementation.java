@@ -20,4 +20,9 @@ public class ChatManagerImplementation implements ChatManager {
     public void removeListener(String eventName, PropertyChangeListener listener) {
 
     }
+
+    @Override
+    public void addUser(String username, String password, String email) {
+        client.addUser(username, password, email);
+    }
 }
