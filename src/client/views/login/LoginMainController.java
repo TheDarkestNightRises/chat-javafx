@@ -1,5 +1,7 @@
 package client.views.login;
 
+import client.core.ViewController;
+import client.core.ViewHandler;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -10,7 +12,7 @@ import viewmodel.LoginMainViewModel;
 import viewmodel.SignUpViewModel;
 
 
-public class LoginMainController {
+public class LoginMainController implements ViewController {
     public Button signIn;
     public Button signUp;
     @FXML

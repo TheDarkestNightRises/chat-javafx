@@ -1,8 +1,8 @@
-package client.views.login;
+package client.views.signup;
 
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import model.UserModel;
+
 
 public class SignUpViewModel {
     private final UserModel model;
@@ -18,7 +18,7 @@ public class SignUpViewModel {
     }
     public boolean createUser(){
         try{
-            model.addUser(username.get(), password.get(), email.get());
+            addUser(username.get(), password.get(), email.get());
             return true;
         }catch (Exception e){
             return false;
