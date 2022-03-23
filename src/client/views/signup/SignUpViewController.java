@@ -1,4 +1,4 @@
-package client.views.login;
+package client.views.signup;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
