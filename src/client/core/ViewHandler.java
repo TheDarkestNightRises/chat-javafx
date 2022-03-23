@@ -47,6 +47,18 @@ public class ViewHandler {
             e.printStackTrace();
         }
     }
+    public void openLogin(){
+        try {
+            Parent root = loadFXML("client/views/login/LoginMain.fxml");
+            Scene loginScene = new Scene(root);
+            stage.setTitle("Login");
+           // stage = new Scene(loginScene);
+            stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
 
     private Parent loadFXML(String path) throws IOException {
         FXMLLoader loader = new FXMLLoader();

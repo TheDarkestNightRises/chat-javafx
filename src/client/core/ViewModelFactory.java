@@ -3,10 +3,12 @@ package client.core;
 import client.views.chat.ChatViewModel;
 import client.views.log.LogViewModel;
 
+
 public class ViewModelFactory {
     private ModelFactory modelFactory;
     private ChatViewModel chatViewModel;
     private LogViewModel logViewModel;
+
 
     public ViewModelFactory(ModelFactory modelFactory) {
         this.modelFactory = modelFactory;
@@ -23,4 +25,5 @@ public class ViewModelFactory {
             logViewModel = new LogViewModel(modelFactory.getChatManager());
         return logViewModel;
     }
+
 }
