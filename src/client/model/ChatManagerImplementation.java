@@ -8,6 +8,7 @@ public class ChatManagerImplementation implements ChatManager {
     private Client client;
     public ChatManagerImplementation(Client client) {
         this.client = client;
+        client.startClient();
     }
 
     @Override

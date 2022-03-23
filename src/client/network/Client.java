@@ -1,4 +1,8 @@
 package client.network;
 
-public interface Client {
+import util.Subject;
+
+public interface Client extends Subject {
+    void startClient();
+
 }
