@@ -1,17 +1,19 @@
 package client.views.login;
 
 
+import client.model.ChatManager;
+import client.model.User;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
-import model.UserModel;
+
 
 public class LoginMainViewModel {
-    private final UserModel model;
+    private final User model;
     private static StringProperty username;
     private static StringProperty password;
 
-    public LoginMainViewModel(UserModel model) {
-        this.model = model;
+    public LoginMainViewModel(ChatManager model) {
+        this.model = (User) model;
         this.username = new SimpleStringProperty("");
         this.password = new SimpleStringProperty("");
     }

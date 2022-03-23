@@ -7,7 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.Region;
+
 
 public class ChatViewController implements ViewController {
     @FXML private ListView<String> chatView;

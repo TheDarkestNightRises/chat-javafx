@@ -2,9 +2,12 @@ package client.core;
 
 import client.views.chat.ChatViewModel;
 import client.views.log.LogViewModel;
+import client.views.login.LoginMainViewModel;
 
 
 public class ViewModelFactory {
+    public LoginMainViewModel loginMainViewModel;
+    public LoginMainViewModel getLoginMainViewModel;
     private ModelFactory modelFactory;
     private ChatViewModel chatViewModel;
     private LogViewModel logViewModel;
@@ -24,6 +27,11 @@ public class ViewModelFactory {
         if (logViewModel == null)
             logViewModel = new LogViewModel(modelFactory.getChatManager());
         return logViewModel;
+    }
+    public LoginMainViewModel getLoginMainViewModel(){
+        if (loginMainViewModel == null)
+            loginMainViewModel = new LoginMainViewModel(modelFactory.getChatManager());
+        return loginMainViewModel;
     }
 
 }

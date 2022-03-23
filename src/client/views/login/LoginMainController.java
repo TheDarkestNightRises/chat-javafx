@@ -3,7 +3,6 @@ package client.views.login;
 import client.core.ViewController;
 import client.core.ViewHandler;
 import client.core.ViewModelFactory;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.PasswordField;
@@ -12,7 +11,7 @@ import javafx.scene.layout.Region;
 
 
 
-public class LoginMainController {
+public class LoginMainController implements ViewController{
     public Button signIn;
     public Button signUp;
     @FXML
@@ -38,9 +37,9 @@ public class LoginMainController {
 
     }
 
-    public void init(ViewHandler vh, LoginMainViewModel loginMainViewModel) {
+    public void init(ViewHandler vh, ViewModelFactory vmf) {
         this.viewHandler = vh;
-        this.loginMainViewModel = loginMainViewModel;
+        this.loginMainViewModel = vmf.getLoginMainViewModel;
 
 
         LoginMainViewModel.bindUsername(username.textProperty());
