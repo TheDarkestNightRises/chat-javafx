@@ -3,6 +3,7 @@ package server.network;
 import client.model.User;
 import server.model.ServerChatManager;
 import shared.LogEntry;
+import shared.Message;
 import shared.Request;
 
 import java.io.IOException;
@@ -45,4 +46,13 @@ public class SocketHandler implements Runnable{
             e.printStackTrace();
         }
     }
+    
+    public void sendMessageToClient(Message message) {
+        try {
+            outToClient.writeObject(message);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
 }
