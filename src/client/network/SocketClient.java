@@ -2,6 +2,7 @@ package client.network;
 
 import shared.LogEntry;
 import client.model.User;
+import shared.Message;
 import shared.Request;
 
 import java.beans.PropertyChangeListener;
@@ -37,22 +38,20 @@ public class SocketClient implements Client{
     private void listenToServer(ObjectOutputStream outToServer,
         ObjectInputStream inFromServer)
     {
-        while (true)
-        {
             try
             {
-                Request request = (Request) inFromServer.readObject();
-                support.firePropertyChange(request.getType(),null,request.getArg());
+                outToServer.writeObject(new Request("Listener",null));
+                while (true) {
+                    Request response = (Request) inFromServer.readObject();
+                    System.out.println(response.getArg());
+                    support.firePropertyChange(response.getType(),null,response.getArg());
+                }
             }
-            catch (IOException e)
+            catch (IOException | ClassNotFoundException e)
             {
                 e.printStackTrace();
             }
-            catch (ClassNotFoundException e)
-            {
-                e.printStackTrace();
-            }
-        }
+
     }
 
     @Override
@@ -101,6 +100,18 @@ public class SocketClient implements Client{
         return false;
     }
 
+    @Override public void sendMessage(Message message)
+    {
+        Request request = new Request("SendMessage",message);
+        try {
+            Socket socket = new Socket("localhost",6969);
+            ObjectOutputStream outToServer = new ObjectOutputStream(socket.getOutputStream());
+            outToServer.writeObject(request);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
     private Request request(String arg, String type) throws IOException, ClassNotFoundException {
         Socket socket = new Socket("localhost", 6969);
         ObjectOutputStream outToServer = new ObjectOutputStream(socket.getOutputStream());
@@ -111,11 +122,13 @@ public class SocketClient implements Client{
 
     @Override
     public void addListener(String eventName, PropertyChangeListener listener) {
-
+        support.addPropertyChangeListener(eventName,listener);
     }
 
     @Override
     public void removeListener(String eventName, PropertyChangeListener listener) {
-
+        support.removePropertyChangeListener(eventName,listener);
     }
+
+
 }

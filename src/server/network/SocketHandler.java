@@ -6,6 +6,7 @@ import shared.LogEntry;
 import shared.Message;
 import shared.Request;
 
+import java.beans.PropertyChangeEvent;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -17,11 +18,13 @@ public class SocketHandler implements Runnable
 {
   private final Socket socket;
   private final ServerChatManager serverChatManager;
+  private final ConnectionPool connectionPool;
   private ObjectOutputStream outToClient;
   private ObjectInputStream inFromClient;
 
-  public SocketHandler(Socket socket, ServerChatManager serverChatManager)
+  public SocketHandler(Socket socket, ServerChatManager serverChatManager,ConnectionPool connectionPool)
   {
+    this.connectionPool = connectionPool;
     this.socket = socket;
     this.serverChatManager = serverChatManager;
     try
@@ -40,6 +43,9 @@ public class SocketHandler implements Runnable
     try
     {
       Request request = (Request) inFromClient.readObject();
+      if ("Listener".equals(request.getType())) {
+        serverChatManager.addListener("MessageAdded",this::onNewMessage);
+      }
       if ("UserAdded".equals(request.getType()))
       {
         serverChatManager.addUser((User) request.getArg());
@@ -54,8 +60,24 @@ public class SocketHandler implements Runnable
         boolean state = serverChatManager.isSignedIn((User) request.getArg());
         outToClient.writeObject(new Request("SignIn", state));
       }
+      else if("SendMessage".equals(request.getType()))
+      {
+        connectionPool.broadcast((Message) request.getArg());
+      }
     }
     catch (IOException | ClassNotFoundException e)
+    {
+      e.printStackTrace();
+    }
+  }
+
+  private void onNewMessage(PropertyChangeEvent propertyChangeEvent)
+  {
+    try
+    {
+      outToClient.writeObject(new Request(propertyChangeEvent.getPropertyName(),propertyChangeEvent.getNewValue()));
+    }
+    catch (IOException e)
     {
       e.printStackTrace();
     }
@@ -65,7 +87,8 @@ public class SocketHandler implements Runnable
   {
     try
     {
-      outToClient.writeObject(message);
+      Request request = new Request("MessageAdded",message);
+      outToClient.writeObject(request);
     }
     catch (IOException e)
     {

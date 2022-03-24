@@ -2,17 +2,18 @@ package shared;
 
 import client.model.User;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalTime;
 
-public class Message
+public class Message implements Serializable
 {
   private String message;
   private LocalDate date;
   private LocalTime time;
   private User user;
 
-  private Message(User user, String message)
+  public Message(User user, String message)
   {
     this.user = user;
     this.message = message;
@@ -48,5 +49,10 @@ public class Message
   public User getUser()
   {
     return user;
+  }
+
+  public String toString()
+  {
+    return user.getUsername() + ": " + message + " (" + time + " " + date + ")";
   }
 }
