@@ -9,17 +9,17 @@ public class SignUpViewModel {
     private final ChatManager model;
     private final StringProperty username;
     private final StringProperty password;
-    private final StringProperty email;
+
 
     public SignUpViewModel(ChatManager model){
         this.model = model;
         this.username = new SimpleStringProperty("");
         this.password = new SimpleStringProperty("");
-        this.email = new SimpleStringProperty("");
+
     }
     public boolean createUser(){
         try{
-            model.addUser(username.get(), password.get(), email.get());
+            model.addUser(username.get(), password.get());
             reset();
             return true;
         }catch (Exception e){
@@ -33,13 +33,10 @@ public class SignUpViewModel {
     public void bindPassword(StringProperty property){
         password.bindBidirectional(property);
     }
-    public void bindEmail(StringProperty property){
-        email.bindBidirectional(property);
-    }
+
     public void reset(){
         username.set("");
         password.set("");
-        email.set("");
     }
 
 }

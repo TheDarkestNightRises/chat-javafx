@@ -7,7 +7,7 @@ import java.util.List;
 
 public interface Client extends Subject {
     void startClient();
-    void addUser(String username, String password, String email);
+    void addUser(String username, String password);
     List<LogEntry> getLog();
     boolean signIn(String username, String password);
 }

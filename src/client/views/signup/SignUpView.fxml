@@ -25,11 +25,7 @@
                 <TextField fx:id="username" onAction="#submitUsername" prefHeight="33.0" prefWidth="316.0" promptText="Username" />
          </children>
         </HBox>
-        <HBox alignment="CENTER" layoutX="144.0" layoutY="180.0" prefHeight="62.0" prefWidth="384.0">
-            <children>
-                <TextField fx:id="email" onAction="#submitEmail" prefHeight="33.0" prefWidth="316.0" promptText="Email" />
-            </children>
-        </HBox>
+        <HBox alignment="CENTER" layoutX="144.0" layoutY="180.0" prefHeight="62.0" prefWidth="384.0" />
         <HBox alignment="CENTER" layoutX="142.0" layoutY="256.0" prefHeight="69.0" prefWidth="384.0">
          <children>
                 <PasswordField fx:id="password" onAction="#submitPassword" prefHeight="33.0" prefWidth="316.0" promptText="Password" />

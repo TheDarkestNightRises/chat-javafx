@@ -23,15 +23,19 @@ public class SignUpViewController implements ViewController {
     private SignUpViewModel viewModel;
     private static Region root;
 
+    @Override
+    public void init(ViewHandler vh, ViewModelFactory vmf) {
+        viewHandler = vh;
+        viewModel = vmf.getSignUpViewModel();
+        viewModel.bindPassword(password.textProperty());
+        viewModel.bindUsername(username.textProperty());
+    }
+
     @FXML
     public void submitUsername() {
         password.requestFocus();
     }
 
-    @FXML
-    public void submitEmail() {
-        email.requestFocus();
-    }
 
     @FXML
     public void submitPassword() {
@@ -41,19 +45,8 @@ public class SignUpViewController implements ViewController {
     @FXML
     protected void signUpButtonPressed() {
         viewModel.createUser();
+        viewHandler.openLogin();
     }
 
-
-
-    public static Region getRoot() {
-        return root;
-    }
-
-
-    @Override
-    public void init(ViewHandler vh, ViewModelFactory vmf) {
-        viewHandler = vh;
-        viewModel = vmf.getSignUpViewModel();
-    }
 }
 

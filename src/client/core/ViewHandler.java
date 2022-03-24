@@ -19,7 +19,7 @@ public class ViewHandler {
 
     public void start() {
         stage = new Stage();
-        openChat();
+        openLogin();
     }
 
     public void openChat() {
@@ -49,10 +49,10 @@ public class ViewHandler {
     }
     public void openLogin(){
         try {
-            Parent root = loadFXML("client/views/login/LoginMain.fxml");
+            Parent root = loadFXML("../views/login/LoginMain.fxml");
             Scene loginScene = new Scene(root);
             stage.setTitle("Login");
-           // stage = new Scene(loginScene);
+            stage.setScene(loginScene);
             stage.show();
         }catch (IOException e){
             e.printStackTrace();

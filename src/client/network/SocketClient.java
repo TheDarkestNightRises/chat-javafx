@@ -56,8 +56,8 @@ public class SocketClient implements Client{
     }
 
     @Override
-    public void addUser(String username, String password, String email) {
-        Request request = new Request("UserAdded",new User(username,password,email));
+    public void addUser(String username, String password) {
+        Request request = new Request("UserAdded",new User(username,password));
         try {
             Socket socket = new Socket("localhost",6969);
             ObjectOutputStream outToServer = new ObjectOutputStream(socket.getOutputStream());
@@ -85,12 +85,14 @@ public class SocketClient implements Client{
     {
         try
         {
-            Request request = new Request("SignIn",new User("",username,password));
+            System.out.println(username + " " + password);
+            Request request = new Request("SignIn",new User(username,password));
             Socket socket = new Socket("localhost",6969);
             ObjectOutputStream outToServer = new ObjectOutputStream(socket.getOutputStream());
             ObjectInputStream inFromServer = new ObjectInputStream(socket.getInputStream());
             outToServer.writeObject(request);
             Request response = (Request) inFromServer.readObject();
+            return (boolean) response.getArg();
         }
         catch (IOException | ClassNotFoundException e)
         {

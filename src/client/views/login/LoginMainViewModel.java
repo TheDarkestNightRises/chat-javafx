@@ -19,15 +19,9 @@ public class LoginMainViewModel {
 
   public boolean signIn()
   {
-    reset();
     return chatManager.signIn(username.get(),password.get());
   }
 
-  private void reset()
-  {
-    this.username.setValue("");
-    this.password.setValue("");
-  }
 
   public StringProperty usernameProperty()
   {

@@ -7,24 +7,26 @@ import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ServerChatManagerImplementation implements ServerChatManager{
-    private List<User> userList;
+public class ServerChatManagerImplementation implements ServerChatManager
+{
+  private List<User> userList;
   private PropertyChangeSupport support;
   private List<LogEntry> logEntries;
 
-    public ServerChatManagerImplementation() {
-        this.userList = new ArrayList<>();
-      support = new PropertyChangeSupport(this);
-      logEntries = new ArrayList<>();
-    }
+  public ServerChatManagerImplementation()
+  {
+    this.userList = new ArrayList<>();
+    support = new PropertyChangeSupport(this);
+    logEntries = new ArrayList<>();
+  }
 
-    @Override
-    public void addUser(User user) {
-        userList.add(user);
-        System.out.println(userList);
-    }
+  @Override public void addUser(User user)
+  {
+    userList.add(user);
+    System.out.println(userList);
+  }
 
- // the actual method to get all the data into the log
+  // the actual method to get all the data into the log
 
   @Override public List<LogEntry> getLog()
   {
@@ -33,12 +35,18 @@ public class ServerChatManagerImplementation implements ServerChatManager{
 
   @Override public boolean isSignedIn(User user)
   {
-    for(User currentUser : userList)
+    System.out.println(user);
+    boolean result = false;
+    for (User currentUser : userList)
     {
-      if((currentUser.getPassword().equals(user.getPassword())) &&( currentUser.getUsername().equals(user.getUsername())))
-        return true;
+      if (currentUser.equals(user))
+      {
+        result = true;
+        break;
+      }
     }
-      return false;
+    System.out.println(result);
+    return result;
   }
 
 }
