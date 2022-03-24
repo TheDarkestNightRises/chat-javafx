@@ -43,7 +43,7 @@ public class LogViewModel implements PropertyChangeListener
 
   void loadLogs() {
     List<LogEntry> logList = chatManager.getLog();
-//    logItems = FXCollections.observableArrayList(logList);
+    logItems = FXCollections.observableArrayList(logList);
   }
 
   @Override public void propertyChange(PropertyChangeEvent evt)

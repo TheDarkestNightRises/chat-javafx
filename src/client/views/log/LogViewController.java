@@ -32,11 +32,11 @@ public class LogViewController implements ViewController
     viewHandler = vh;
     logViewModel = vmf.getLogViewModel();
     logViewModel.loadLogs();
-    //    tableview.setItems(logViewModel.getLogs());
-    //    text.setCellValueFactory(new PropertyValueFactory<>("text"));
-    //    IP.setCellValueFactory(new PropertyValueFactory<>("ip"));
-    //    date.setCellValueFactory(new PropertyValueFactory<>("date"));
-    //    time.setCellValueFactory(new PropertyValueFactory<>("time"));
+    tableview.setItems(logViewModel.getLogs());
+    text.setCellValueFactory(new PropertyValueFactory<>("text"));
+    IP.setCellValueFactory(new PropertyValueFactory<>("ip"));
+    date.setCellValueFactory(new PropertyValueFactory<>("date"));
+    time.setCellValueFactory(new PropertyValueFactory<>("time"));
   }
 
 }
