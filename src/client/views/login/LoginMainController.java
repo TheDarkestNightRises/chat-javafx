@@ -38,8 +38,10 @@ public class LoginMainController implements ViewController
   public void signInButtonPressed()
   {
     boolean isSignedIn = viewModel.signIn();
-    System.out.println(isSignedIn);
-    if (isSignedIn) viewHandler.openChat();
+    if (isSignedIn) {
+      viewModel.setUser();
+      viewHandler.openChat();
+    }
   }
 
   public void signUpButtonPressed()

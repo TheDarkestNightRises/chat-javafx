@@ -13,6 +13,7 @@ public class ChatManagerImplementation implements ChatManager
 
   private PropertyChangeSupport support = new PropertyChangeSupport(this);
   private Client client;
+  private User user;
 
   public ChatManagerImplementation(Client client)
   {
@@ -53,4 +54,18 @@ public class ChatManagerImplementation implements ChatManager
     client.addUser(username, password);
   }
 
+  public void setUser(User user)
+  {
+    this.user = user;
+  }
+
+  @Override public String getUser()
+  {
+    return user.getUsername();
+  }
+
+  @Override public void sendMessage(String messageBody)
+  {
+
+  }
 }

@@ -1,6 +1,7 @@
 package client.views.login;
 
 import client.model.ChatManager;
+import client.model.User;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 
@@ -32,5 +33,10 @@ public class LoginMainViewModel {
   public StringProperty passwordProperty()
   {
     return password;
+  }
+
+  public void setUser()
+  {
+    chatManager.setUser(new User(username.get(),password.get()));
   }
 }

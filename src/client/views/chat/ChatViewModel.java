@@ -7,22 +7,22 @@ import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import shared.Message;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
-import java.util.ArrayList;
 
 public class ChatViewModel implements PropertyChangeListener
 {
     private ChatManager model;
     private SimpleListProperty<String> chat;
-    private StringProperty message;
+    private StringProperty messageBody;
     private StringProperty user;
     public ChatViewModel(ChatManager chatManager) {
         this.model = chatManager;
         this.chat = new SimpleListProperty<>(FXCollections.observableArrayList());
-        this.message = new SimpleStringProperty("");
-        this.user = new SimpleStringProperty("");
+        this.messageBody = new SimpleStringProperty("");
+        this.user = new SimpleStringProperty(model.getUser());
     }
     public void updateChat()
     {
@@ -30,7 +30,7 @@ public class ChatViewModel implements PropertyChangeListener
     }
     public void send()
     {
-
+        model.sendMessage(messageBody.get());
     }
     public void bindChat(ObjectProperty<ObservableList<String>> property)
     {
@@ -38,7 +38,7 @@ public class ChatViewModel implements PropertyChangeListener
     }
     public void bindMessage(StringProperty property)
     {
-        property.bindBidirectional(message);
+        property.bindBidirectional(messageBody);
     }
     public void bindUser(StringProperty property)
     {
