@@ -10,37 +10,33 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 import shared.LogEntry;
 
-public class LogViewController implements ViewController {
+public class LogViewController implements ViewController
+{
 
-    @FXML private TableView<LogEntry> tableview;
-    @FXML public TableColumn<String, LogEntry> IP;
-    @FXML public TableColumn<String, LogEntry> date;
-    @FXML public TableColumn<String, LogEntry> time;
-    @FXML public TableColumn<String, LogEntry> text;
+  @FXML private TableView<LogEntry> tableview;
+  @FXML public TableColumn<String, LogEntry> IP;
+  @FXML public TableColumn<String, LogEntry> date;
+  @FXML public TableColumn<String, LogEntry> time;
+  @FXML public TableColumn<String, LogEntry> text;
 
-    private ViewHandler viewHandler;
-    private LogViewModel logViewModel;
+  private ViewHandler viewHandler;
+  private LogViewModel logViewModel;
 
-  @FXML
-  public void back() {
+  @FXML public void back()
+  {
     viewHandler.openChat();
   }
 
-  @Override
-  public void init(ViewHandler vh, ViewModelFactory vmf) {
+  @Override public void init(ViewHandler vh, ViewModelFactory vmf)
+  {
     viewHandler = vh;
     logViewModel = vmf.getLogViewModel();
     logViewModel.loadLogs();
-    logViewModel.bindItems(tableview.itemsProperty());
-    IP.setCellValueFactory(new PropertyValueFactory<>("IP"));
-    date.setCellValueFactory(new PropertyValueFactory<>("date"));
-    time.setCellValueFactory(new PropertyValueFactory<>("time"));
-    text.setCellValueFactory(new PropertyValueFactory<>("text"));
-
-    logViewModel.bindIP(IP.textProperty());
-    logViewModel.bindDate(date.textProperty());
-    logViewModel.bindTime(time.textProperty());
-    logViewModel.bindText(text.textProperty());
+    //    tableview.setItems(logViewModel.getLogs());
+    //    text.setCellValueFactory(new PropertyValueFactory<>("text"));
+    //    IP.setCellValueFactory(new PropertyValueFactory<>("ip"));
+    //    date.setCellValueFactory(new PropertyValueFactory<>("date"));
+    //    time.setCellValueFactory(new PropertyValueFactory<>("time"));
   }
 
 }

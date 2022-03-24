@@ -24,7 +24,7 @@ public class ServerChatManagerImplementation implements ServerChatManager{
         System.out.println(userList);
     }
 
- // the actual method to get all the date into the log
+ // the actual method to get all the data into the log
 
   @Override public List<LogEntry> getLog()
   {

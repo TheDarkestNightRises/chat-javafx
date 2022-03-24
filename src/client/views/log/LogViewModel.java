@@ -38,11 +38,12 @@ public class LogViewModel implements PropertyChangeListener
 
   private void onNewLogEntry(PropertyChangeEvent evt) {
     logItems.add((LogEntry)evt.getNewValue());
+
   }
 
   void loadLogs() {
     List<LogEntry> logList = chatManager.getLog();
-    logItems = FXCollections.observableArrayList(logList);
+//    logItems = FXCollections.observableArrayList(logList);
   }
 
   @Override public void propertyChange(PropertyChangeEvent evt)
@@ -50,30 +51,9 @@ public class LogViewModel implements PropertyChangeListener
     //
   }
 
-  public void bindItems(ObjectProperty<ObservableList<LogEntry>> property)
-  {
-   property.bind(
-       (ObservableValue<? extends ObservableList<LogEntry>>) logItems);
-  }
 
   ObservableList<LogEntry> getLogs() {
     return logItems;
-  }
-  public void bindIP(StringProperty property)
-  {
-    property.bind(IP);
-  }
-  public void bindDate(StringProperty property)
-  {
-    property.bind(date);
-  }
-  public void bindTime(StringProperty property)
-  {
-    property.bind(time);
-  }
-  public void bindText(StringProperty property)
-  {
-    property.bind(text);
   }
 
 }

@@ -2,6 +2,7 @@ package server.network;
 
 import client.model.User;
 import server.model.ServerChatManager;
+import shared.LogEntry;
 import shared.Request;
 
 import java.io.IOException;
@@ -9,6 +10,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.List;
 
 public class SocketHandler implements Runnable{
     private final Socket socket;
@@ -33,6 +35,9 @@ public class SocketHandler implements Runnable{
             Request request = (Request) inFromClient.readObject();
             if("UserAdded".equals(request.getType())) {
                 serverChatManager.addUser((User) request.getArg());
+            } else if("FetchLog".equals(request.getType())){
+                List<LogEntry> log = serverChatManager.getLog();
+                outToClient.writeObject(new Request("FetchLog",log));
             }
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
