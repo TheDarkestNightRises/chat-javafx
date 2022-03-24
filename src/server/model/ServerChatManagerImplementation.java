@@ -15,5 +15,6 @@ public class ServerChatManagerImplementation implements ServerChatManager{
     @Override
     public void addUser(User user) {
         userList.add(user);
+        System.out.println(userList);
     }
 }

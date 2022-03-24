@@ -40,4 +40,5 @@ public class SignUpViewModel {
         password.set("");
         email.set("");
     }
+
 }

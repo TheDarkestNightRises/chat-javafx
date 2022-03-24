@@ -40,7 +40,7 @@ public class SignUpViewController implements ViewController {
 
     @FXML
     protected void signUpButtonPressed() {
-
+        viewModel.createUser();
     }
 
 
@@ -52,7 +52,7 @@ public class SignUpViewController implements ViewController {
 
     @Override
     public void init(ViewHandler vh, ViewModelFactory vmf) {
-        
+
     }
 }
 

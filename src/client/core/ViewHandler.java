@@ -38,7 +38,7 @@ public class ViewHandler {
 
     public void openLog() {
         try {
-            Parent root = loadFXML("../views/log/LogView.fxml");
+            Parent root = loadFXML("../views/log/Log.fxml");
             Scene logScene = new Scene(root);
             stage.setTitle("Log");
             stage.setScene(logScene);
@@ -53,6 +53,18 @@ public class ViewHandler {
             Scene loginScene = new Scene(root);
             stage.setTitle("Login");
            // stage = new Scene(loginScene);
+            stage.show();
+        }catch (IOException e){
+            e.printStackTrace();
+        }
+    }
+
+    public void openSignUp(){
+        try {
+            Parent root = loadFXML("../views/signup/SignUpView.fxml");
+            Scene signUp = new Scene(root);
+            stage.setTitle("Sign Up");
+            stage.setScene(signUp);
             stage.show();
         }catch (IOException e){
             e.printStackTrace();

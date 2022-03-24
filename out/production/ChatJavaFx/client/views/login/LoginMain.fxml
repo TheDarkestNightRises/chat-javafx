@@ -1,72 +1,72 @@
-<!--<?xml version="1.0" encoding="UTF-8"?>-->
+<?xml version="1.0" encoding="UTF-8"?>
 
-<!--<?import javafx.scene.control.Button?>-->
-<!--<?import javafx.scene.control.Label?>-->
-<!--<?import javafx.scene.control.PasswordField?>-->
-<!--<?import javafx.scene.control.TextField?>-->
-<!--<?import javafx.scene.layout.AnchorPane?>-->
-<!--<?import javafx.scene.layout.HBox?>-->
-<!--<?import javafx.scene.text.Font?>-->
-<!--<?import javafx.scene.text.Text?>-->
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<!--<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="616.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.LoginMainController">-->
-<!--    <children>-->
-<!--        <HBox layoutX="79.0" layoutY="81.0" prefHeight="63.0" prefWidth="237.0">-->
-<!--            <children>-->
-<!--                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sign In" textAlignment="CENTER" wrappingWidth="241.9830722808838">-->
-<!--                    <font>-->
-<!--                        <Font size="48.0" />-->
-<!--                    </font>-->
-<!--                </Text>-->
-<!--            </children>-->
-<!--        </HBox>-->
-<!--        <HBox layoutX="87.0" layoutY="197.0" prefHeight="22.0" prefWidth="226.0">-->
-<!--            <children>-->
-<!--                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username" textAlignment="CENTER" wrappingWidth="225.9830722808838">-->
-<!--                    <font>-->
-<!--                        <Font size="18.0" />-->
-<!--                    </font>-->
-<!--                </Text>-->
-<!--            </children>-->
-<!--        </HBox>-->
-<!--        <HBox layoutX="79.0" layoutY="241.0" prefHeight="39.0" prefWidth="242.0">-->
-<!--            <children>-->
-<!--                <TextField fx:id="username" alignment="CENTER" onAction="#usernameTyped" prefHeight="44.0" prefWidth="243.0" promptText="Username" />-->
-<!--            </children>-->
-<!--        </HBox>-->
-<!--        <HBox layoutX="87.0" layoutY="308.0" prefHeight="24.0" prefWidth="226.0">-->
-<!--            <children>-->
-<!--                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password" textAlignment="CENTER" wrappingWidth="225.9830722808838">-->
-<!--                    <font>-->
-<!--                        <Font size="18.0" />-->
-<!--                    </font>-->
-<!--                </Text>-->
-<!--            </children>-->
-<!--        </HBox>-->
-<!--        <HBox layoutX="79.0" layoutY="358.0" prefHeight="39.0" prefWidth="243.0">-->
-<!--            <children>-->
-<!--                <PasswordField fx:id="password" alignment="CENTER" onAction="#passwordTyped" prefHeight="39.0" prefWidth="243.0" promptText="Password" />-->
-<!--            </children>-->
-<!--        </HBox>-->
-<!--        <HBox layoutX="79.0" layoutY="462.0" prefHeight="39.0" prefWidth="106.0">-->
-<!--            <children>-->
-<!--                <Button fx:id="signIn" mnemonicParsing="false" onAction="#signInButtonPressed" prefHeight="41.0" prefWidth="106.0" text="Sign In" />-->
-<!--            </children>-->
-<!--        </HBox>-->
-<!--        <HBox layoutX="33.0" layoutY="415.0" prefHeight="27.0" prefWidth="243.0">-->
-<!--            <children>-->
-<!--                <Label prefHeight="49.0" prefWidth="264.0" />-->
-<!--            </children>-->
-<!--        </HBox>-->
-<!--        <HBox layoutX="142.0" layoutY="529.0" prefHeight="39.0" prefWidth="117.0">-->
-<!--            <children>-->
-<!--                <Button fx:id="signUp" mnemonicParsing="false" onAction="#signUpButtonPressed" prefHeight="52.0" prefWidth="118.0" text="Sign Up" />-->
-<!--            </children>-->
-<!--        </HBox>-->
-<!--        <HBox layoutX="225.0" layoutY="465.0" prefHeight="33.0" prefWidth="117.0">-->
-<!--            <children>-->
-<!--                <Label prefHeight="33.0" prefWidth="116.0" text="Forgot Password" />-->
-<!--            </children>-->
-<!--        </HBox>-->
-<!--    </children>-->
-<!--</AnchorPane>-->
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="616.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.LoginMainController">
+    <children>
+        <HBox layoutX="79.0" layoutY="81.0" prefHeight="63.0" prefWidth="237.0">
+            <children>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Sign In" textAlignment="CENTER" wrappingWidth="241.9830722808838">
+                    <font>
+                        <Font size="48.0" />
+                    </font>
+                </Text>
+            </children>
+        </HBox>
+        <HBox layoutX="87.0" layoutY="197.0" prefHeight="22.0" prefWidth="226.0">
+            <children>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Username" textAlignment="CENTER" wrappingWidth="225.9830722808838">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Text>
+            </children>
+        </HBox>
+        <HBox layoutX="79.0" layoutY="241.0" prefHeight="39.0" prefWidth="242.0">
+            <children>
+                <TextField fx:id="username" alignment="CENTER" onAction="#usernameTyped" prefHeight="44.0" prefWidth="243.0" promptText="Username" />
+            </children>
+        </HBox>
+        <HBox layoutX="87.0" layoutY="308.0" prefHeight="24.0" prefWidth="226.0">
+            <children>
+                <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Password" textAlignment="CENTER" wrappingWidth="225.9830722808838">
+                    <font>
+                        <Font size="18.0" />
+                    </font>
+                </Text>
+            </children>
+        </HBox>
+        <HBox layoutX="79.0" layoutY="358.0" prefHeight="39.0" prefWidth="243.0">
+            <children>
+                <PasswordField fx:id="password" alignment="CENTER" onAction="#passwordTyped" prefHeight="39.0" prefWidth="243.0" promptText="Password" />
+            </children>
+        </HBox>
+        <HBox layoutX="79.0" layoutY="462.0" prefHeight="39.0" prefWidth="106.0">
+            <children>
+                <Button fx:id="signIn" mnemonicParsing="false" onAction="#signInButtonPressed" prefHeight="41.0" prefWidth="106.0" text="Sign In" />
+            </children>
+        </HBox>
+        <HBox layoutX="33.0" layoutY="415.0" prefHeight="27.0" prefWidth="243.0">
+            <children>
+                <Label prefHeight="49.0" prefWidth="264.0" />
+            </children>
+        </HBox>
+        <HBox layoutX="142.0" layoutY="529.0" prefHeight="39.0" prefWidth="117.0">
+            <children>
+                <Button fx:id="signUp" mnemonicParsing="false" onAction="#signUpButtonPressed" prefHeight="52.0" prefWidth="118.0" text="Sign Up" />
+            </children>
+        </HBox>
+        <HBox layoutX="225.0" layoutY="465.0" prefHeight="33.0" prefWidth="117.0">
+            <children>
+                <Label prefHeight="33.0" prefWidth="116.0" text="Forgot Password" />
+            </children>
+        </HBox>
+    </children>
+</AnchorPane>
