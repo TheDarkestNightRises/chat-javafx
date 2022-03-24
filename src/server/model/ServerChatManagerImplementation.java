@@ -31,5 +31,14 @@ public class ServerChatManagerImplementation implements ServerChatManager{
     return new ArrayList<>(logEntries);
   }
 
+  @Override public boolean isSignedIn(User user)
+  {
+    for(User currentUser : userList)
+    {
+      if((currentUser.getPassword().equals(user.getPassword())) &&( currentUser.getUsername().equals(user.getUsername())))
+        return true;
+    }
+      return false;
+  }
 
 }

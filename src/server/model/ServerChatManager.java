@@ -8,4 +8,5 @@ import java.util.List;
 public interface ServerChatManager {
     void addUser(User user);
     List<LogEntry> getLog();
+  boolean isSignedIn(User user);
 }

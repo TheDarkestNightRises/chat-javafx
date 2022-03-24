@@ -39,7 +39,7 @@ public class SocketHandler implements Runnable{
                 List<LogEntry> log = serverChatManager.getLog();
                 outToClient.writeObject(new Request("FetchLog",log));
             } else if("SignIn".equals(request.getType())) {
-
+               boolean state = serverChatManager.isSignedIn((User) request.getArg());
             }
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
