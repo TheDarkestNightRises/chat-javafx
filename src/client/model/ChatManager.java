@@ -8,4 +8,5 @@ import java.util.List;
 public interface ChatManager extends Subject {
     void addUser(String username, String password, String email);
     List<LogEntry> getLog();
+    boolean signIn(String username, String password);
 }

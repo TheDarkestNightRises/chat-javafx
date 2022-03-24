@@ -30,8 +30,13 @@ public class ChatManagerImplementation implements ChatManager {
         return client.getLog();
     }
 
+  @Override public boolean signIn(String username, String password)
+  {
+    client.signIn(username,password);
+    return false;
+  }
 
-    @Override
+  @Override
     public void addListener(String eventName, PropertyChangeListener listener) {
    support.addPropertyChangeListener(eventName, listener);
     }

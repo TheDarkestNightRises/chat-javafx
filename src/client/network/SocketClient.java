@@ -81,6 +81,24 @@ public class SocketClient implements Client{
         return null;
     }
 
+    @Override public boolean signIn(String username, String password)
+    {
+        try
+        {
+            Request request = new Request("SignIn",new User("",username,password));
+            Socket socket = new Socket("localhost",6969);
+            ObjectOutputStream outToServer = new ObjectOutputStream(socket.getOutputStream());
+            ObjectInputStream inFromServer = new ObjectInputStream(socket.getInputStream());
+            outToServer.writeObject(request);
+            Request response = (Request) inFromServer.readObject();
+        }
+        catch (IOException e)
+        {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
     private Request request(String arg, String type) throws IOException, ClassNotFoundException {
         Socket socket = new Socket("localhost", 6969);
         ObjectOutputStream outToServer = new ObjectOutputStream(socket.getOutputStream());

@@ -9,4 +9,5 @@ public interface Client extends Subject {
     void startClient();
     void addUser(String username, String password, String email);
     List<LogEntry> getLog();
+    boolean signIn(String username, String password);
 }

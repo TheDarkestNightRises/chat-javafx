@@ -15,17 +15,20 @@ public class LoginMainController implements ViewController
   public Button signIn;
   public Button signUp;
   private ViewHandler viewHandler;
-  private LoginMainViewModel LoginMainViewModel;
+  private LoginMainViewModel viewModel;
 
   @Override 
   public void init(ViewHandler vh, ViewModelFactory vmf)
   {
     this.viewHandler = vh;
-    this.LoginMainViewModel = vmf.getLoginMainViewModel();
+    this.viewModel = vmf.getLoginMainViewModel();
+    username.textProperty().bindBidirectional(viewModel.usernameProperty());
+    password.textProperty().bindBidirectional(viewModel.passwordProperty());
   }
 
   public void usernameTyped()
   {
+
   }
 
   public void passwordTyped()
@@ -34,10 +37,12 @@ public class LoginMainController implements ViewController
 
   public void signInButtonPressed()
   {
+    if (viewModel.signIn()) viewHandler.openChat();
   }
 
   public void signUpButtonPressed()
   {
+    viewHandler.openSignUp();
   }
 
 

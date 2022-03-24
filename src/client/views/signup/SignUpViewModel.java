@@ -20,6 +20,7 @@ public class SignUpViewModel {
     public boolean createUser(){
         try{
             model.addUser(username.get(), password.get(), email.get());
+            reset();
             return true;
         }catch (Exception e){
             return false;

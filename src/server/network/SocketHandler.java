@@ -38,6 +38,8 @@ public class SocketHandler implements Runnable{
             } else if("FetchLog".equals(request.getType())){
                 List<LogEntry> log = serverChatManager.getLog();
                 outToClient.writeObject(new Request("FetchLog",log));
+            } else if("SignIn".equals(request.getType())) {
+
             }
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
