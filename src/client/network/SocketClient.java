@@ -92,7 +92,7 @@ public class SocketClient implements Client{
             outToServer.writeObject(request);
             Request response = (Request) inFromServer.readObject();
         }
-        catch (IOException e)
+        catch (IOException | ClassNotFoundException e)
         {
             e.printStackTrace();
         }
