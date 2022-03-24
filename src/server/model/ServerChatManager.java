@@ -2,10 +2,12 @@ package server.model;
 
 import client.model.User;
 import shared.LogEntry;
+import util.Subject;
 
 import java.util.List;
 
-public interface ServerChatManager {
+public interface ServerChatManager extends Subject
+{
     void addUser(User user);
     List<LogEntry> getLog();
   boolean isSignedIn(User user);

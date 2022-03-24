@@ -6,6 +6,7 @@ import shared.LogEntry;
 import shared.Message;
 import shared.Request;
 
+import java.beans.PropertyChangeEvent;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -42,6 +43,9 @@ public class SocketHandler implements Runnable
     try
     {
       Request request = (Request) inFromClient.readObject();
+      if ("Listener".equals(request.getType())) {
+        serverChatManager.addListener("MessageAdded",this::onNewMessage);
+      }
       if ("UserAdded".equals(request.getType()))
       {
         serverChatManager.addUser((User) request.getArg());
@@ -62,6 +66,18 @@ public class SocketHandler implements Runnable
       }
     }
     catch (IOException | ClassNotFoundException e)
+    {
+      e.printStackTrace();
+    }
+  }
+
+  private void onNewMessage(PropertyChangeEvent propertyChangeEvent)
+  {
+    try
+    {
+      outToClient.writeObject(new Request(propertyChangeEvent.getPropertyName(),propertyChangeEvent.getNewValue()));
+    }
+    catch (IOException e)
     {
       e.printStackTrace();
     }

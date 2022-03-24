@@ -40,6 +40,7 @@ public class SocketClient implements Client{
     {
             try
             {
+                outToServer.writeObject(new Request("Listener",null));
                 while (true) {
                     Request response = (Request) inFromServer.readObject();
                     System.out.println(response.getArg());
@@ -121,12 +122,12 @@ public class SocketClient implements Client{
 
     @Override
     public void addListener(String eventName, PropertyChangeListener listener) {
-
+        support.addPropertyChangeListener(eventName,listener);
     }
 
     @Override
     public void removeListener(String eventName, PropertyChangeListener listener) {
-
+        support.removePropertyChangeListener(eventName,listener);
     }
 
 

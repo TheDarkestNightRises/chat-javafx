@@ -20,7 +20,13 @@ public class ChatManagerImplementation implements ChatManager
   {
     this.client = client;
     client.startClient();
-    client.addListener("NewLogEntry", this::onNewLogEntry);
+//    client.addListener("NewLogEntry", this::onNewLogEntry);
+    client.addListener("MessageAdded", this::onNewMessage);
+  }
+
+  private void onNewMessage(PropertyChangeEvent propertyChangeEvent)
+  {
+    support.firePropertyChange(propertyChangeEvent);
   }
 
   private void onNewLogEntry(PropertyChangeEvent evt)
@@ -38,17 +44,7 @@ public class ChatManagerImplementation implements ChatManager
     return client.signIn(username, password);
   }
 
-  @Override public void addListener(String eventName,
-      PropertyChangeListener listener)
-  {
-    support.addPropertyChangeListener(eventName, listener);
-  }
 
-  @Override public void removeListener(String eventName,
-      PropertyChangeListener listener)
-  {
-    support.removePropertyChangeListener(eventName, listener);
-  }
 
   @Override public void addUser(String username, String password)
   {
@@ -69,5 +65,17 @@ public class ChatManagerImplementation implements ChatManager
   {
    Message message = new Message(user,messageBody);
    client.sendMessage(message);
+  }
+
+  @Override public void addListener(String eventName,
+      PropertyChangeListener listener)
+  {
+    support.addPropertyChangeListener(eventName, listener);
+  }
+
+  @Override public void removeListener(String eventName,
+      PropertyChangeListener listener)
+  {
+    support.removePropertyChangeListener(eventName, listener);
   }
 }

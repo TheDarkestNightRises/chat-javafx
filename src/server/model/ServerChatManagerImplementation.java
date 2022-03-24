@@ -3,6 +3,7 @@ package server.model;
 import client.model.User;
 import shared.LogEntry;
 
+import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
 import java.util.ArrayList;
 import java.util.List;
@@ -49,4 +50,15 @@ public class ServerChatManagerImplementation implements ServerChatManager
     return result;
   }
 
+  @Override public void addListener(String eventName,
+      PropertyChangeListener listener)
+  {
+    support.addPropertyChangeListener(eventName, listener);
+  }
+
+  @Override public void removeListener(String eventName,
+      PropertyChangeListener listener)
+  {
+    support.removePropertyChangeListener(eventName,listener);
+  }
 }
