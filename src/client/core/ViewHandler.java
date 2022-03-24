@@ -32,6 +32,7 @@ public class ViewHandler {
                 e.printStackTrace();
             }
         }
+        stage.setTitle("Chat");
         stage.setScene(chatScene);
         stage.show();
     }

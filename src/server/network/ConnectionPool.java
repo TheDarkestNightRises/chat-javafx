@@ -21,4 +21,8 @@ public class ConnectionPool {
     public void removeConnection(SocketHandler socketHandler) {
         conns.remove(socketHandler);
     }
+
+    public int getNumberOfUser() {
+        return conns.size();
+    }
 }
