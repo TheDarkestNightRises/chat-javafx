@@ -2,6 +2,7 @@ package client.model;
 
 import client.network.Client;
 import shared.LogEntry;
+import shared.Message;
 
 import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
@@ -66,6 +67,7 @@ public class ChatManagerImplementation implements ChatManager
 
   @Override public void sendMessage(String messageBody)
   {
-
+   Message message = new Message(user,messageBody);
+   client.sendMessage(message);
   }
 }

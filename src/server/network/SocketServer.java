@@ -18,10 +18,13 @@ public class SocketServer {
     public void startServer() {
         try {
             ServerSocket serverSocket = new ServerSocket(6969);
+            ConnectionPool pool = new ConnectionPool();
             System.out.println("Server started...");
             while (true) {
                 Socket socket = serverSocket.accept();
-                new Thread(new SocketHandler(socket,serverChatManager)).start();
+                SocketHandler socketHandler = new SocketHandler(socket,serverChatManager,pool);
+                new Thread(socketHandler).start();
+                pool.addConnection(socketHandler);
             }
         } catch (IOException e) {
             e.printStackTrace();

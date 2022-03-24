@@ -17,11 +17,13 @@ public class SocketHandler implements Runnable
 {
   private final Socket socket;
   private final ServerChatManager serverChatManager;
+  private final ConnectionPool connectionPool;
   private ObjectOutputStream outToClient;
   private ObjectInputStream inFromClient;
 
-  public SocketHandler(Socket socket, ServerChatManager serverChatManager)
+  public SocketHandler(Socket socket, ServerChatManager serverChatManager,ConnectionPool connectionPool)
   {
+    this.connectionPool = connectionPool;
     this.socket = socket;
     this.serverChatManager = serverChatManager;
     try
@@ -54,6 +56,10 @@ public class SocketHandler implements Runnable
         boolean state = serverChatManager.isSignedIn((User) request.getArg());
         outToClient.writeObject(new Request("SignIn", state));
       }
+      else if("SendMessage".equals(request.getType()))
+      {
+        connectionPool.broadcast((Message) request.getArg());
+      }
     }
     catch (IOException | ClassNotFoundException e)
     {
@@ -65,7 +71,8 @@ public class SocketHandler implements Runnable
   {
     try
     {
-      outToClient.writeObject(message);
+      Request request = new Request("MessageAdded",message);
+      outToClient.writeObject(request);
     }
     catch (IOException e)
     {
