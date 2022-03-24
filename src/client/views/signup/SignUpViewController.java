@@ -52,7 +52,8 @@ public class SignUpViewController implements ViewController {
 
     @Override
     public void init(ViewHandler vh, ViewModelFactory vmf) {
-
+        viewHandler = vh;
+        viewModel = vmf.getSignUpViewModel();
     }
 }
 
