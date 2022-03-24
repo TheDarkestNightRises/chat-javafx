@@ -38,7 +38,7 @@ public class ViewHandler {
 
     public void openLog() {
         try {
-            Parent root = loadFXML("../views/log/Log.fxml");
+            Parent root = loadFXML("../views/log/LogView.fxml");
             Scene logScene = new Scene(root);
             stage.setTitle("Log");
             stage.setScene(logScene);
