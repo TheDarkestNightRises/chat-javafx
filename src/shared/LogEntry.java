@@ -38,4 +38,10 @@ public class LogEntry implements Serializable
   {
     return time;
   }
+
+  @Override public String toString()
+  {
+    return "LogEntry{" + "text='" + text + '\'' + ", ip='" + ip + '\''
+        + ", date=" + date + ", time=" + time + '}';
+  }
 }

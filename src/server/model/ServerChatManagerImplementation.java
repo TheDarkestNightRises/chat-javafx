@@ -6,6 +6,7 @@ import shared.Message;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,12 +15,14 @@ public class ServerChatManagerImplementation implements ServerChatManager
   private List<User> userList;
   private PropertyChangeSupport support;
   private List<LogEntry> logEntries;
+  private DefaultLog defaultLog;
 
   public ServerChatManagerImplementation()
   {
     this.userList = new ArrayList<>();
     support = new PropertyChangeSupport(this);
     logEntries = new ArrayList<>();
+    defaultLog = DefaultLog.getInstance();
   }
 
   @Override public void addUser(User user)
@@ -57,6 +60,14 @@ public class ServerChatManagerImplementation implements ServerChatManager
   @Override public void sendMessage(Message arg)
   {
     LogEntry logEntry = new LogEntry(arg.getMessage(), arg.getIp(),arg.getDate(),arg.getTime());
+    try
+    {
+      defaultLog.log(logEntry.toString());
+    }
+    catch (IOException e)
+    {
+      e.printStackTrace();
+    }
     logEntries.add(logEntry);
     support.firePropertyChange("NewLogEntry",null,logEntry);
   }
