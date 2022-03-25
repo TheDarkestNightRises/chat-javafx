@@ -13,4 +13,5 @@ public interface Client extends Subject {
     boolean signIn(String username, String password);
   void sendMessage(Message message);
   String getIp();
+  int getNumberOfUsers();
 }

@@ -24,8 +24,10 @@ public class ServerChatManagerImplementation implements ServerChatManager
 
   @Override public void addUser(User user)
   {
+    int oldValue = userList.size();
     userList.add(user);
     System.out.println(userList);
+    support.firePropertyChange("OnNewUserEntry",oldValue,userList.size());
   }
 
   // the actual method to get all the data into the log
@@ -57,6 +59,11 @@ public class ServerChatManagerImplementation implements ServerChatManager
     LogEntry logEntry = new LogEntry(arg.getMessage(), arg.getIp(),arg.getDate(),arg.getTime());
     logEntries.add(logEntry);
     support.firePropertyChange("NewLogEntry",null,logEntry);
+  }
+
+  @Override public int getNumberOfUsers()
+  {
+    return userList.size();
   }
 
   @Override public void addListener(String eventName,

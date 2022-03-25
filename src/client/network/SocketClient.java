@@ -138,6 +138,20 @@ public class SocketClient implements Client
     return ip;
   }
 
+  @Override public int getNumberOfUsers()
+  {
+    try
+    {
+      Request response = request(null, "FetchNumberOfUsers");
+      return (int) response.getArg();
+    }
+    catch (IOException | ClassNotFoundException e)
+    {
+      e.printStackTrace();
+    }
+    return 0;
+  }
+
   private Request request(String arg, String type)
       throws IOException, ClassNotFoundException
   {

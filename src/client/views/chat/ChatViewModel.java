@@ -15,39 +15,63 @@ import java.beans.PropertyChangeListener;
 
 public class ChatViewModel
 {
-    private ChatManager model;
-    private SimpleListProperty<String> chat;
-    private StringProperty messageBody;
-    private StringProperty user;
-    public ChatViewModel(ChatManager chatManager) {
-        this.model = chatManager;
-        this.chat = new SimpleListProperty<>(FXCollections.observableArrayList());
-        this.messageBody = new SimpleStringProperty("");
-        this.user = new SimpleStringProperty(model.getUser());
-        model.addListener("MessageAdded",this::updateChat);
-    }
+  private ChatManager model;
+  private SimpleListProperty<String> chat;
+  private StringProperty messageBody;
+  private StringProperty user;
+  private StringProperty onlineUsers;
 
-    private void updateChat(PropertyChangeEvent propertyChangeEvent)
-    {
-        Message message = (Message) propertyChangeEvent.getNewValue();
-        Platform.runLater(() -> chat.add(String.valueOf(message)));
-    }
+  public ChatViewModel(ChatManager chatManager)
+  {
+    this.model = chatManager;
+    this.chat = new SimpleListProperty<>(FXCollections.observableArrayList());
+    this.messageBody = new SimpleStringProperty("");
+    this.user = new SimpleStringProperty(model.getUser());
+    this.onlineUsers = new SimpleStringProperty("");
+    model.addListener("MessageAdded", this::updateChat);
+    chatManager.addListener("OnNewUserEntry", this::onNewUserEntry);
 
-    public void send()
-    {
-        model.sendMessage(messageBody.get());
-    }
-    public void bindChat(ObjectProperty<ObservableList<String>> property)
-    {
-        property.bind(chat);
-    }
-    public void bindMessage(StringProperty property)
-    {
-        property.bindBidirectional(messageBody);
-    }
-    public void bindUser(StringProperty property)
-    {
-        property.bind(user);
-    }
+  }
 
+  private void onNewUserEntry(PropertyChangeEvent propertyChangeEvent)
+  {
+    int number = (int) propertyChangeEvent.getNewValue();
+    Platform.runLater(() -> onlineUsers.set("Online users: " + number));
+  }
+
+  private void updateChat(PropertyChangeEvent propertyChangeEvent)
+  {
+    Message message = (Message) propertyChangeEvent.getNewValue();
+    Platform.runLater(() -> chat.add(String.valueOf(message)));
+  }
+
+  public void send()
+  {
+    model.sendMessage(messageBody.get());
+  }
+
+  public void bindChat(ObjectProperty<ObservableList<String>> property)
+  {
+    property.bind(chat);
+  }
+
+  public void bindMessage(StringProperty property)
+  {
+    property.bindBidirectional(messageBody);
+  }
+
+  public void bindUser(StringProperty property)
+  {
+    property.bind(user);
+  }
+
+  public void bindOnlineUsers(StringProperty textProperty)
+  {
+    textProperty.bindBidirectional(onlineUsers);
+  }
+
+  public void fetchNumberOfOnlineUsers()
+  {
+    onlineUsers.set("Online users: " + model.getNumberOfUsers());
+  }
 }

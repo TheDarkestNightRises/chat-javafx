@@ -13,4 +13,5 @@ public interface ServerChatManager extends Subject
     List<LogEntry> getLog();
   boolean isSignedIn(User user);
   void sendMessage(Message arg);
+  int getNumberOfUsers();
 }

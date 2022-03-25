@@ -22,6 +22,12 @@ public class ChatManagerImplementation implements ChatManager
     client.startClient();
     client.addListener("NewLogEntry", this::onNewLogEntry);
     client.addListener("MessageAdded", this::onNewMessage);
+    client.addListener("OnNewUserEntry", this::onNewUserEntry);
+  }
+
+  private void onNewUserEntry(PropertyChangeEvent propertyChangeEvent)
+  {
+    support.firePropertyChange(propertyChangeEvent);
   }
 
   private void onNewMessage(PropertyChangeEvent propertyChangeEvent)
@@ -60,6 +66,11 @@ public class ChatManagerImplementation implements ChatManager
   @Override public String getUser()
   {
     return user.getUsername();
+  }
+
+  @Override public int getNumberOfUsers()
+  {
+    return client.getNumberOfUsers();
   }
 
   @Override public void sendMessage(String messageBody)

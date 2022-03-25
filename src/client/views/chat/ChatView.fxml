@@ -5,14 +5,15 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.views.chat.ChatViewController">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="client.views.chat.ChatViewController">
    <children>
       <ListView fx:id="chatView" layoutX="71.0" layoutY="71.0" prefHeight="230.0" prefWidth="458.0" />
       <TextField fx:id="message" layoutX="71.0" layoutY="328.0" prefHeight="26.0" prefWidth="368.0" />
       <Button layoutX="465.0" layoutY="328.0" mnemonicParsing="false" onAction="#sendButtonPressed" prefHeight="26.0" prefWidth="63.0" text="Send" />
       <Button layoutX="467.0" layoutY="35.0" mnemonicParsing="false" onAction="#viewLogButtonPressed" text="Vew log" />
       <Label fx:id="user" layoutX="71.0" layoutY="23.0" prefHeight="34.0" prefWidth="261.0" />
-      <Button layoutX="380.0" layoutY="35.0" mnemonicParsing="false" onAction="#openSignUp" text="Sign Up" />
+      <Text fx:id="onlineUsers" layoutX="333.0" layoutY="52.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Online Users" wrappingWidth="92.53680419921875" />
    </children>
 </AnchorPane>

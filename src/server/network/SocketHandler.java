@@ -22,7 +22,8 @@ public class SocketHandler implements Runnable
   private ObjectOutputStream outToClient;
   private ObjectInputStream inFromClient;
 
-  public SocketHandler(Socket socket, ServerChatManager serverChatManager,ConnectionPool connectionPool)
+  public SocketHandler(Socket socket, ServerChatManager serverChatManager,
+      ConnectionPool connectionPool)
   {
     this.connectionPool = connectionPool;
     this.socket = socket;
@@ -43,8 +44,10 @@ public class SocketHandler implements Runnable
     try
     {
       Request request = (Request) inFromClient.readObject();
-      if ("Listener".equals(request.getType())) {
-        serverChatManager.addListener("NewLogEntry",this::onNewLogEntry);
+      if ("Listener".equals(request.getType()))
+      {
+        serverChatManager.addListener("NewLogEntry", this::onNewLogEntry);
+        serverChatManager.addListener("OnNewUserEntry", this::onNewUserEntry);
       }
       if ("UserAdded".equals(request.getType()))
       {
@@ -55,14 +58,20 @@ public class SocketHandler implements Runnable
         List<LogEntry> log = serverChatManager.getLog();
         outToClient.writeObject(new Request("FetchLog", log));
       }
+      else if ("FetchNumberOfUsers".equals(request.getType()))
+      {
+        int numberOfUsers = serverChatManager.getNumberOfUsers();
+        outToClient.writeObject(
+            new Request("FetchNumberOfUsers", numberOfUsers));
+      }
       else if ("SignIn".equals(request.getType()))
       {
         boolean state = serverChatManager.isSignedIn((User) request.getArg());
         outToClient.writeObject(new Request("SignIn", state));
       }
-      else if("SendMessage".equals(request.getType()))
+      else if ("SendMessage".equals(request.getType()))
       {
-        serverChatManager.sendMessage((Message)request.getArg());
+        serverChatManager.sendMessage((Message) request.getArg());
         connectionPool.broadcast((Message) request.getArg());
       }
     }
@@ -72,11 +81,25 @@ public class SocketHandler implements Runnable
     }
   }
 
+  private void onNewUserEntry(PropertyChangeEvent propertyChangeEvent)
+  {
+    try
+    {
+      outToClient.writeObject(new Request(propertyChangeEvent.getPropertyName(),
+          propertyChangeEvent.getNewValue()));
+    }
+    catch (IOException e)
+    {
+      e.printStackTrace();
+    }
+  }
+
   private void onNewLogEntry(PropertyChangeEvent propertyChangeEvent)
   {
     try
     {
-      outToClient.writeObject(new Request(propertyChangeEvent.getPropertyName(),propertyChangeEvent.getNewValue()));
+      outToClient.writeObject(new Request(propertyChangeEvent.getPropertyName(),
+          propertyChangeEvent.getNewValue()));
     }
     catch (IOException e)
     {
@@ -88,7 +111,7 @@ public class SocketHandler implements Runnable
   {
     try
     {
-      Request request = new Request("MessageAdded",message);
+      Request request = new Request("MessageAdded", message);
       outToClient.writeObject(request);
     }
     catch (IOException e)

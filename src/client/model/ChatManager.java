@@ -14,4 +14,5 @@ public interface ChatManager extends Subject {
     void setUser(User user);
     void sendMessage(String messageBody);
     String getUser();
+    int getNumberOfUsers();
 }
