@@ -15,10 +15,7 @@ public class SignUpViewController implements ViewController {
     private PasswordField password;
     @FXML
     private TextField username;
-    @FXML
-    private TextField email;
-    @FXML
-    private Button signUpButton;
+
     private ViewHandler viewHandler;
     private SignUpViewModel viewModel;
     private static Region root;

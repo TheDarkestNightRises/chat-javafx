@@ -38,7 +38,4 @@ public class ChatViewController implements ViewController {
         viewModel.send();
     }
 
-    public void openSignUp() {
-        vh.openSignUp();
-    }
 }

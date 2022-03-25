@@ -26,14 +26,7 @@ public class LoginMainController implements ViewController
     password.textProperty().bindBidirectional(viewModel.passwordProperty());
   }
 
-  public void usernameTyped()
-  {
 
-  }
-
-  public void passwordTyped()
-  {
-  }
 
   public void signInButtonPressed()
   {

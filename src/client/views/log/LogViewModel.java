@@ -38,7 +38,6 @@ public class LogViewModel
 
   private void onNewLogEntry(PropertyChangeEvent evt) {
     logItems.add((LogEntry)evt.getNewValue());
-
   }
 
   void loadLogs() {
