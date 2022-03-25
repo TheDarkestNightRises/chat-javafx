@@ -17,10 +17,10 @@
       </Text>
       <TableView fx:id="tableview" layoutY="78.0" prefHeight="370.0" prefWidth="577.0">
         <columns>
-          <TableColumn fx:id="IP" prefWidth="75.0" text="IP" />
-          <TableColumn fx:id="date" prefWidth="75.20001220703125" text="Date" />
-            <TableColumn fx:id="time" prefWidth="101.59999084472656" text="Time" />
-            <TableColumn fx:id="text" prefWidth="316.79999389648435" text="Text" />
+          <TableColumn fx:id="IP" prefWidth="158.3999908566475" text="IP" />
+          <TableColumn fx:id="date" prefWidth="82.4000244140625" text="Date" />
+            <TableColumn fx:id="time" prefWidth="76.80000305175781" text="Time" />
+            <TableColumn fx:id="text" prefWidth="256.0" text="Text" />
         </columns>
       </TableView>
    </children>

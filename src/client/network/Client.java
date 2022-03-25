@@ -12,4 +12,5 @@ public interface Client extends Subject {
     List<LogEntry> getLog();
     boolean signIn(String username, String password);
   void sendMessage(Message message);
+  String getIp();
 }

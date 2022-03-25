@@ -64,7 +64,7 @@ public class ChatManagerImplementation implements ChatManager
 
   @Override public void sendMessage(String messageBody)
   {
-   Message message = new Message(user,messageBody);
+   Message message = new Message(user,messageBody,client.getIp());
    client.sendMessage(message);
   }
 

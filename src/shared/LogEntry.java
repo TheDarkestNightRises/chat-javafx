@@ -7,11 +7,11 @@ import java.time.LocalTime;
 public class LogEntry implements Serializable
 {
   private String text;
-  private int ip;
+  private String ip;
   private LocalDate date;
   private LocalTime time;
 
-  public LogEntry(String text, int ip, LocalDate date, LocalTime time)
+  public LogEntry(String text, String ip, LocalDate date, LocalTime time)
   {
     this.text = text;
     this.ip = ip;
@@ -24,7 +24,7 @@ public class LogEntry implements Serializable
     return text;
   }
 
-  public int getIp()
+  public String getIp()
   {
     return ip;
   }

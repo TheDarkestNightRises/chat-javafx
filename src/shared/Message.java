@@ -12,13 +12,15 @@ public class Message implements Serializable
   private LocalDate date;
   private LocalTime time;
   private User user;
+  private String ip;
 
-  public Message(User user, String message)
+  public Message(User user, String message, String ip)
   {
     this.user = user;
     this.message = message;
     this.date = getCurrentDate();
     this.time = getCurrentTime();
+    this.ip = ip;
   }
 
   private LocalTime getCurrentTime()
@@ -54,5 +56,10 @@ public class Message implements Serializable
   public String toString()
   {
     return user.getUsername() + ": " + message + " (" + time + " " + date + ")";
+  }
+
+  public String getIp()
+  {
+    return  ip;
   }
 }

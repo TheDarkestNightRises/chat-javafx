@@ -54,7 +54,7 @@ public class ServerChatManagerImplementation implements ServerChatManager
 
   @Override public void sendMessage(Message arg)
   {
-    LogEntry logEntry = new LogEntry(arg.getMessage(), 1,arg.getDate(),arg.getTime());
+    LogEntry logEntry = new LogEntry(arg.getMessage(), arg.getIp(),arg.getDate(),arg.getTime());
     logEntries.add(logEntry);
     support.firePropertyChange("NewLogEntry",null,logEntry);
   }
