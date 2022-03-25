@@ -44,7 +44,7 @@ public class SocketHandler implements Runnable
     {
       Request request = (Request) inFromClient.readObject();
       if ("Listener".equals(request.getType())) {
-        serverChatManager.addListener("MessageAdded",this::onNewMessage);
+        serverChatManager.addListener("NewLogEntry",this::onNewLogEntry);
       }
       if ("UserAdded".equals(request.getType()))
       {
@@ -62,6 +62,7 @@ public class SocketHandler implements Runnable
       }
       else if("SendMessage".equals(request.getType()))
       {
+        serverChatManager.sendMessage((Message)request.getArg());
         connectionPool.broadcast((Message) request.getArg());
       }
     }
@@ -71,7 +72,7 @@ public class SocketHandler implements Runnable
     }
   }
 
-  private void onNewMessage(PropertyChangeEvent propertyChangeEvent)
+  private void onNewLogEntry(PropertyChangeEvent propertyChangeEvent)
   {
     try
     {

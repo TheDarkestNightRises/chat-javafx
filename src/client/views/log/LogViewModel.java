@@ -14,7 +14,7 @@ import java.beans.PropertyChangeEvent;
 import java.beans.PropertyChangeListener;
 import java.util.List;
 
-public class LogViewModel implements PropertyChangeListener
+public class LogViewModel
 {
 
   private ObservableList<LogEntry> logItems;
@@ -46,10 +46,7 @@ public class LogViewModel implements PropertyChangeListener
     logItems = FXCollections.observableArrayList(logList);
   }
 
-  @Override public void propertyChange(PropertyChangeEvent evt)
-  {
-    //
-  }
+
 
 
   ObservableList<LogEntry> getLogs() {

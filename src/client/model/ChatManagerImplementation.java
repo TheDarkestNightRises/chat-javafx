@@ -20,7 +20,7 @@ public class ChatManagerImplementation implements ChatManager
   {
     this.client = client;
     client.startClient();
-//    client.addListener("NewLogEntry", this::onNewLogEntry);
+    client.addListener("NewLogEntry", this::onNewLogEntry);
     client.addListener("MessageAdded", this::onNewMessage);
   }
 
@@ -31,6 +31,7 @@ public class ChatManagerImplementation implements ChatManager
 
   private void onNewLogEntry(PropertyChangeEvent evt)
   {
+
     support.firePropertyChange(evt);
   }
 

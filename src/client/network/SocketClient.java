@@ -67,7 +67,7 @@ public class SocketClient implements Client{
     }
 
 
-  //the actual method to add date to the log
+
 
     @Override
     public List<LogEntry> getLog() {

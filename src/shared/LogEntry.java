@@ -1,30 +1,22 @@
 package shared;
 
 import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 public class LogEntry implements Serializable
 {
   private String text;
-  private String ip;
-  private String date;
-  private String time;
+  private int ip;
+  private LocalDate date;
+  private LocalTime time;
 
-  public LogEntry(String ip, String date, String time, String text)
+  public LogEntry(String text, int ip, LocalDate date, LocalTime time)
   {
     this.text = text;
     this.ip = ip;
-    this.date= date;
+    this.date = date;
     this.time = time;
-  }
-
-  public String getDate()
-  {
-    return date;
-  }
-
-  public String getIp()
-  {
-    return ip;
   }
 
   public String getText()
@@ -32,7 +24,17 @@ public class LogEntry implements Serializable
     return text;
   }
 
-  public String getTime()
+  public int getIp()
+  {
+    return ip;
+  }
+
+  public LocalDate getDate()
+  {
+    return date;
+  }
+
+  public LocalTime getTime()
   {
     return time;
   }

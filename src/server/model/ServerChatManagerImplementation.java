@@ -2,6 +2,7 @@ package server.model;
 
 import client.model.User;
 import shared.LogEntry;
+import shared.Message;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
@@ -29,6 +30,7 @@ public class ServerChatManagerImplementation implements ServerChatManager
 
   // the actual method to get all the data into the log
 
+
   @Override public List<LogEntry> getLog()
   {
     return new ArrayList<>(logEntries);
@@ -48,6 +50,13 @@ public class ServerChatManagerImplementation implements ServerChatManager
     }
     System.out.println(result);
     return result;
+  }
+
+  @Override public void sendMessage(Message arg)
+  {
+    LogEntry logEntry = new LogEntry(arg.getMessage(), 1,arg.getDate(),arg.getTime());
+    logEntries.add(logEntry);
+    support.firePropertyChange("NewLogEntry",null,logEntry);
   }
 
   @Override public void addListener(String eventName,
